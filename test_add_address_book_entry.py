@@ -20,7 +20,7 @@ class AddAddressBookEntry(unittest.TestCase):
         self.login(wd, "admin", "secret")
         self.open_add_new_page(wd)
         self.fill_in_new_entry(wd, Entry(firstname="Irina", middlename="MiddleName", lastname="LastName",
-                                         nickname="insideout-oss", photo="C:\\fakepath\\Screenshot.png", title="Mrs.",
+                                         nickname="insideout-oss", photo="/Users/Shared/python_training/photo.jpg", title="Mrs.",
                                          company="companyX", address="addressX",
                                          t_home="888888888", t_mobile="87777777777", t_work="567890987",
                                          t_fax="567890987",
@@ -37,7 +37,7 @@ class AddAddressBookEntry(unittest.TestCase):
         self.login(wd, "admin", "secret")
         self.open_add_new_page(wd)
         self.fill_in_new_entry(wd, Entry(firstname="", middlename="", lastname="",
-                                         nickname="", photo="", title="",
+                                         nickname="", photo=None, title="",
                                          company="", address="",
                                          t_home="", t_mobile="", t_work="",
                                          t_fax="",
@@ -71,10 +71,10 @@ class AddAddressBookEntry(unittest.TestCase):
         # fill in nickname
         wd.find_element_by_name("nickname").clear()
         wd.find_element_by_name("nickname").send_keys(entry.nickname)
-        # DO NOT WORK
-        # wd.find_element_by_name("photo").click()
-        # wd.find_element_by_name("photo").clear()
-        # wd.find_element_by_name("photo").send_keys(entry.photo)
+        # pass path to photo
+        if entry.photo:
+            wd.find_element_by_name("photo").clear()
+            wd.find_element_by_name("photo").send_keys(entry.photo)
         # fill in title
         wd.find_element_by_name("title").click()
         wd.find_element_by_name("title").clear()
