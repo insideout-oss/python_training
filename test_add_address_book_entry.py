@@ -16,9 +16,7 @@ class AddAddressBookEntry(unittest.TestCase):
     
     def test_add_address_book_entry(self):
         wd = self.driver
-        self.open_home_page(wd)
         self.login(wd, "admin", "secret")
-        self.open_add_new_page(wd)
         self.fill_in_new_entry(wd, Entry(firstname="Irina", middlename="MiddleName", lastname="LastName",
                                          nickname="insideout-oss", photo="/Users/Shared/python_training/photo.jpg", title="Mrs.",
                                          company="companyX", address="addressX",
@@ -27,15 +25,11 @@ class AddAddressBookEntry(unittest.TestCase):
                                          email="test email", email2="", email3="", homepage="https://homepage.it",
                                          birthdate=datetime.date(1999, 10, 8), anniversary=datetime.date(2000, 12, 29),
                                          secondary=Secondary("second address", "home phone", "notes")))
-        self.return_to_add_new_page(wd)
-        self.return_to_home_page(wd)
         self.logout(wd)
 
     def test_add_empty_address_book_entry(self):
         wd = self.driver
-        self.open_home_page(wd)
         self.login(wd, "admin", "secret")
-        self.open_add_new_page(wd)
         self.fill_in_new_entry(wd, Entry(firstname="", middlename="", lastname="",
                                          nickname="", photo=None, title="",
                                          company="", address="",
@@ -44,11 +38,10 @@ class AddAddressBookEntry(unittest.TestCase):
                                          email="", email2="", email3="", homepage="",
                                          birthdate=None, anniversary=None,
                                          secondary=Secondary("", "", "")))
-        self.return_to_add_new_page(wd)
-        self.return_to_home_page(wd)
         self.logout(wd)
 
     def logout(self, wd):
+        self.return_to_home_page(wd)
         wd.find_element_by_link_text("Logout").click()
 
     def return_to_home_page(self, wd):
@@ -58,6 +51,7 @@ class AddAddressBookEntry(unittest.TestCase):
         wd.find_element_by_link_text("add new").click()
 
     def fill_in_new_entry(self, wd, entry):
+        self.open_add_new_page(wd)
         # fill in first name
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -152,11 +146,13 @@ class AddAddressBookEntry(unittest.TestCase):
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(entry.secondary.notes)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+        self.return_to_add_new_page(wd)
 
     def open_add_new_page(self, wd):
         wd.find_element_by_link_text("add new").click()
 
     def login(self, wd, username, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
