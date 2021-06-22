@@ -5,7 +5,7 @@ from model.secondary import Secondary
 from model.contact import Contact
 
 
-def test_add_address_book_entry(app):
+def test_add_contact(app):
     app.session.login("admin", "secret")
     app.contact.create(Contact(firstname="Irina", middlename="MiddleName", lastname="LastName",
                                nickname="insideout-oss", photo=str(os.getcwd() + "/assets/photo.jpg"), title="Mrs.",
@@ -18,7 +18,7 @@ def test_add_address_book_entry(app):
     app.session.logout()
 
 
-def test_add_empty_address_book_entry(app):
+def test_add_empty_contact(app):
     app.session.login("admin", "secret")
     app.contact.create(Contact(firstname="", middlename="", lastname="",
                                nickname="", photo=None, title="",
