@@ -15,7 +15,7 @@ def app(request):
 
 
 def test_add_address_book_entry(app):
-    app.login("admin", "secret")
+    app.session.login("admin", "secret")
     app.fill_in_new_entry(Entry(firstname="Irina", middlename="MiddleName", lastname="LastName",
                                      nickname="insideout-oss", photo=str(os.getcwd() + "/assets/photo.jpg"), title="Mrs.",
                                      company="companyX", address="addressX",
@@ -24,11 +24,11 @@ def test_add_address_book_entry(app):
                                      email="test email", email2="", email3="", homepage="https://homepage.it",
                                      birthdate=datetime.date(1999, 10, 8), anniversary=datetime.date(2000, 12, 29),
                                      secondary=Secondary("second address", "home phone", "notes")))
-    app.logout()
+    app.session.logout()
 
 
 def test_add_empty_address_book_entry(app):
-    app.login("admin", "secret")
+    app.session.login("admin", "secret")
     app.fill_in_new_entry(Entry(firstname="", middlename="", lastname="",
                                      nickname="", photo=None, title="",
                                      company="", address="",
@@ -37,5 +37,5 @@ def test_add_empty_address_book_entry(app):
                                      email="", email2="", email3="", homepage="",
                                      birthdate=None, anniversary=None,
                                      secondary=Secondary("", "", "")))
-    app.logout()
+    app.session.logout()
 
