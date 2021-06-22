@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-import unittest
 import datetime
 import pytest
 import os
-from application import Application
-from secondary import Secondary
-from entry import Entry
+from fixture.application import Application
+from model.secondary import Secondary
+from model.entry import Entry
 
 
 @pytest.fixture
