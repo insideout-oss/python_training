@@ -1,5 +1,5 @@
 
-class Entry:
+class Contact:
 
     def __init__(self, firstname, middlename, lastname, nickname,
                  photo, title, company, address,
