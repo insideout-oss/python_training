@@ -1,17 +1,8 @@
 # -*- coding: utf-8 -*-
 import datetime
-import pytest
 import os
-from fixture.application import Application
 from model.secondary import Secondary
 from model.contact import Contact
-
-
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
 
 
 def test_add_address_book_entry(app):
