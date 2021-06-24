@@ -40,3 +40,77 @@ class GroupHelper:
         # submit delete
         wd.find_element_by_name("delete").click()
         self.return_to_groups_page()
+
+    def get_group(self, index):
+        wd = self.app.wd
+        # Assume we are on group page already
+        ids = wd.find_elements_by_name("selected[]")
+        if index in range(0, len(ids)):
+            return ids[index]
+        return wd.find_element_by_name("selected[]")
+
+    def delete(self, index):
+        wd = self.app.wd
+        self.open_groups_page()
+        self.get_group(index).click()
+        # submit delete
+        wd.find_element_by_name("delete").click()
+        self.return_to_groups_page()
+
+    def modify(self, group, index):
+        wd = self.app.wd
+        self.open_groups_page()
+        # Select group by index
+        self.get_group(index).click()
+        # Edit group
+        wd.find_element_by_name("edit").click()
+        wd.find_element_by_name("group_name").click()
+        wd.find_element_by_name("group_name").clear()
+        wd.find_element_by_name("group_name").send_keys(group.name)
+        wd.find_element_by_name("group_header").click()
+        wd.find_element_by_name("group_header").clear()
+        wd.find_element_by_name("group_header").send_keys(group.header)
+        wd.find_element_by_name("group_footer").click()
+        wd.find_element_by_name("group_footer").clear()
+        wd.find_element_by_name("group_footer").send_keys(group.footer)
+        wd.find_element_by_name("update").click()
+        self.return_to_groups_page()
+
+    def modify_name(self, name, index):
+        wd = self.app.wd
+        self.open_groups_page()
+        # Select group by index
+        self.get_group(index).click()
+        # Edit group
+        wd.find_element_by_name("edit").click()
+        wd.find_element_by_name("group_name").click()
+        wd.find_element_by_name("group_name").clear()
+        wd.find_element_by_name("group_name").send_keys(name)
+        wd.find_element_by_name("update").click()
+        self.return_to_groups_page()
+
+    def modify_header(self, header, index):
+        wd = self.app.wd
+        self.open_groups_page()
+        # Select group by index
+        wd.find_element_by_xpath("//div[@id='content']/form/span["+str(index)+"]/input").click()
+        # Edit group
+        wd.find_element_by_name("edit").click()
+        wd.find_element_by_name("group_header").click()
+        wd.find_element_by_name("group_header").clear()
+        wd.find_element_by_name("group_header").send_keys(header)
+        wd.find_element_by_name("update").click()
+        self.return_to_groups_page()
+
+    def modify_footer(self, footer, index):
+        wd = self.app.wd
+        self.open_groups_page()
+        # Select group by index
+        wd.find_element_by_xpath("//div[@id='content']/form/span["+str(index)+"]/input").click()
+        # Edit group
+        wd.find_element_by_name("edit").click()
+        wd.find_element_by_name("group_footer").click()
+        wd.find_element_by_name("group_footer").clear()
+        wd.find_element_by_name("group_footer").send_keys(footer)
+        wd.find_element_by_name("update").click()
+        self.return_to_groups_page()
