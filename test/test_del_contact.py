@@ -1,6 +1,13 @@
 
 
-def test_delete_contact(app):
+def test_delete_first_contact(app):
     app.session.login(username="admin", password="secret")
-    app.contact.delete_contact(10)
+    app.contact.delete_first_contact()
     app.session.logout()
+
+
+def test_delete_contact_via_edit(app):
+    app.session.login(username="admin", password="secret")
+    app.contact.delete_first_contact_via_edit()
+    app.session.logout()
+
