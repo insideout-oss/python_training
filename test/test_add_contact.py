@@ -5,6 +5,10 @@ from model.secondary import Secondary
 from model.contact import Contact
 
 
+def test_add_none_contact(app):
+    app.contact.create(Contact())
+
+
 def test_add_contact(app):
     app.contact.create(Contact(firstname="Name1", middlename="MiddleName", lastname="LastName",
                                nickname="insideout-oss", photo=str(os.getcwd() + "/assets/photo.jpg"), title="Mrs.",

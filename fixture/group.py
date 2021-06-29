@@ -70,3 +70,8 @@ class GroupHelper:
     def submit_delete(self):
         wd = self.app.wd
         wd.find_element_by_name("delete").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        return len(wd.find_elements_by_name("selected[]"))
