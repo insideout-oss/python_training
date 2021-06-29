@@ -6,7 +6,6 @@ from model.contact import Contact
 
 
 def test_add_contact(app):
-    app.session.login("admin", "secret")
     app.contact.create(Contact(firstname="Name1", middlename="MiddleName", lastname="LastName",
                                nickname="insideout-oss", photo=str(os.getcwd() + "/assets/photo.jpg"), title="Mrs.",
                                company="companyX", address="addressX",
@@ -15,11 +14,9 @@ def test_add_contact(app):
                                email="test email", email2=None, email3=None, homepage="https://homepage.it",
                                birthdate=datetime.date(1900, 1, 1), anniversary=datetime.date(1950, 3, 3),
                                secondary=Secondary("second address", "home phone", "notes")))
-    app.session.logout()
 
 
 def test_add_empty_contact(app):
-    app.session.login("admin", "secret")
     app.contact.create(Contact(firstname="", middlename="", lastname="",
                                nickname="", photo=None, title="",
                                company="", address="",
@@ -28,5 +25,4 @@ def test_add_empty_contact(app):
                                email="", email2="", email3="", homepage="",
                                birthdate=None, anniversary=None,
                                secondary=Secondary("", "", "")))
-    app.session.logout()
 
