@@ -7,13 +7,13 @@ from model.contact import Contact
 
 def test_add_contact(app):
     app.session.login("admin", "secret")
-    app.contact.create(Contact(firstname="Irina", middlename="MiddleName", lastname="LastName",
+    app.contact.create(Contact(firstname="Name1", middlename="MiddleName", lastname="LastName",
                                nickname="insideout-oss", photo=str(os.getcwd() + "/assets/photo.jpg"), title="Mrs.",
                                company="companyX", address="addressX",
                                t_home="888888888", t_mobile="87777777777", t_work="567890987",
                                t_fax="567890987",
-                               email="test email", email2="", email3="", homepage="https://homepage.it",
-                               birthdate=datetime.date(1999, 10, 8), anniversary=datetime.date(2000, 12, 29),
+                               email="test email", email2=None, email3=None, homepage="https://homepage.it",
+                               birthdate=datetime.date(1900, 1, 1), anniversary=datetime.date(1950, 3, 3),
                                secondary=Secondary("second address", "home phone", "notes")))
     app.session.logout()
 

@@ -9,17 +9,17 @@ def test_modify_first_group(app):
 
 def test_modify_first_group_name(app):
     app.session.login(username="admin", password="secret")
-    app.group.modify_first_group(Group(name="name_edited", header=None, footer=None))
+    app.group.modify_first_group(Group(name="name_edited"))
     app.session.logout()
 
 
 def test_modify_first_group_header(app):
     app.session.login(username="admin", password="secret")
-    app.group.modify_first_group(Group(name=None, header="Header modified", footer=None))
+    app.group.modify_first_group(Group(header="Header modified"))
     app.session.logout()
 
 
 def test_modify_first_group_footer(app):
     app.session.login(username="admin", password="secret")
-    app.group.modify_first_group(Group(name=None, header=None, footer="Footer modified"))
+    app.group.modify_first_group(Group(footer="Footer modified"))
     app.session.logout()
