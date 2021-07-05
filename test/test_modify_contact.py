@@ -1,13 +1,16 @@
 import datetime
 import os
+from random import randrange
+
 from model.secondary import Secondary
 from model.contact import Contact
 
 
-def test_modify_contact(app):
+def test_modify_some_contact(app):
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="NameBefore Modify"))
     old_contacts = app.contact.get_contact_list()
+    index = randrange(len(old_contacts))
     contact = Contact(firstname="Modify", middlename="MiddleNameModify", lastname="Edited",
                                nickname="Edited-oss", photo=None, title=None,
                                company="Edited", address="Edited",
@@ -16,11 +19,11 @@ def test_modify_contact(app):
                                email="Edited", email2="", email3="", homepage="https://Edited.it",
                                birthdate=datetime.date(1999, 10, 8), anniversary=None,
                                secondary=Secondary("Edited second address", "Edited home phone", "Edited notes"))
-    contact.id = old_contacts[0].id
-    app.contact.modify_first_contact(contact)
+    contact.id = old_contacts[index].id
+    app.contact.modify_contact_by_index(contact, index)
     new_contact = app.contact.get_contact_list()
     assert len(old_contacts) == len (new_contact)
-    old_contacts[0] = contact
+    old_contacts[index] = contact
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contact, key=Contact.id_or_max)
 
 

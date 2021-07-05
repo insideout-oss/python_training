@@ -13,8 +13,11 @@ class ContactHelper:
             wd.find_element_by_link_text("add new").click()
 
     def select_first_contact(self):
+        self.select_contact_by_index(0)
+
+    def select_contact_by_index(self, index):
         wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
 
     def open_edit_page(self):
         wd = self.app.wd
@@ -101,8 +104,11 @@ class ContactHelper:
         self.contact_cache = None
 
     def modify_first_contact(self, entry):
+        self.modify_contact_by_index(entry , 0)
+
+    def modify_contact_by_index(self, entry, index):
         self.app.open_home_page()
-        self.select_first_contact()
+        self.select_contact_by_index(index)
         self.open_edit_page()
         self.fill_contact(entry)
         self.submit_update()
@@ -110,16 +116,22 @@ class ContactHelper:
         self.contact_cache = None
 
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         self.app.open_home_page()
-        self.select_first_contact()
+        self.select_contact_by_index(index)
         self.submit_delete()
         self.accept_alert()
         self.app.open_home_page()
         self.contact_cache = None
 
     def delete_first_contact_via_edit(self):
+        self.delete_contact_via_edit_by_index(0)
+
+    def delete_contact_via_edit_by_index(self, index):
         self.app.open_home_page()
-        self.select_first_contact()
+        self.select_contact_by_index(index)
         self.open_edit_page()
         self.submit_delete()
         self.app.open_home_page()
