@@ -57,6 +57,10 @@ class ContactHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(text)
 
+    def get_field_value(self, field_name):
+        wd = self.app.wd
+        return wd.find_element_by_name(field_name).get_attribute("value")
+
     def change_field_value_without_click(self, field_name, text):
         wd = self.app.wd
         if text is not None:
@@ -158,13 +162,15 @@ class ContactHelper:
                 fname = element.find_element_by_xpath("//input[@id=%s]/following::td[2]" % str(id)).text
                 cells = element.find_elements_by_tag_name("td")
                 all_phones = cells[5].text
+                all_emails = cells[4].text
+                images = element.find_elements_by_tag_name("img")
+                homepage = element.find_element_by_xpath("//input[@id=%s]/following::td[9]/a/img" % str(id)).\
+                    get_attribute("title") if len(images) == 4 else ""
                 self.contact_cache.append(Contact(firstname=fname, lastname=lname, id=id,
-                                                  all_phones_from_home_page=all_phones))
+                                                  all_phones_from_home_page=all_phones,
+                                                  all_emails_from_home_page=all_emails,
+                                                  homepage=homepage))
         return list(self.contact_cache)
-
-    def get_contact_info_from_edit_page(self, index):
-        wd = self.app.wd
-        self.op
 
     def open_contact_edit_page_by_index(self, index):
         self.app.open_home_page()
@@ -172,18 +178,23 @@ class ContactHelper:
         self.open_edit_page(self.get_contact_id_by_index(index))
 
     def get_contact_info_from_edit_page(self, index):
-        wd = self.app.wd
         self.open_contact_edit_page_by_index(index)
-        firstname = wd.find_element_by_name("firstname").get_attribute("value")
-        lastname = wd.find_element_by_name("lastname").get_attribute("value")
-        id = wd.find_element_by_name("id").get_attribute("value")
-        homephone = wd.find_element_by_name("home").get_attribute("value")
-        workphone = wd.find_element_by_name("work").get_attribute("value")
-        mobilephone = wd.find_element_by_name("mobile").get_attribute("value")
-        secondphone = wd.find_element_by_name("phone2").get_attribute("value")
+        firstname = self.get_field_value("firstname")
+        lastname = self.get_field_value("lastname")
+        id = self.get_field_value("id")
+        home = self.get_field_value("home")
+        work = self.get_field_value("work")
+        mobile = self.get_field_value("mobile")
+        phone2 = self.get_field_value("phone2")
+        email1 = self.get_field_value("email")
+        email2 = self.get_field_value("email2")
+        email3 = self.get_field_value("email3")
+        homepage = self.get_field_value("homepage")
         return Contact(firstname=firstname, lastname=lastname, id=id,
-                       t_home=homephone, t_work=workphone,
-                       t_mobile=mobilephone, secondary=Secondary(home=secondphone))
+                       t_home=home, t_work=work,
+                       t_mobile=mobile, secondary=Secondary(home=phone2),
+                       email=email1, email2=email2, email3=email3,
+                       homepage=homepage)
 
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
