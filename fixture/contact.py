@@ -213,3 +213,21 @@ class ContactHelper:
         secondary_home = re.search("P: (.*)", text)
         return Contact(t_home=t_home, t_work=t_work, t_mobile=t_mobile, secondary=Secondary(home=secondary_home))
 
+    def clear(self, s):
+        return re.sub("[() -]", "", s)
+
+    def remain(self, s):
+        return s
+
+    def merge_data_like_on_home_page(self, entry_list, func):
+        return "\n".join(filter(lambda x: x != "",
+                                map(lambda x: func(x),
+                                    filter(lambda x: x is not None, entry_list))))
+
+    def merge_phones_like_on_home_page(self, contact):
+        secondary = None
+        if contact.secondary is not None:
+            secondary = contact.secondary.home
+
+        return self.merge_data_like_on_home_page([contact.t_home, contact.t_mobile, contact.t_work, secondary],
+                                                 self.clear)
