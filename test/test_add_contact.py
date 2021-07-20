@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
-import datetime
-import os
-import random
-import string
 import pytest
-
-from model.secondary import Secondary
 from model.contact import Contact
+from data.contacts import testdata
 
 
-@pytest.mark.parametrize("contact", test_data, ids=[repr(x) for x in test_data])
+@pytest.mark.parametrize("contact", testdata, ids=[repr(x) for x in testdata])
 def test_add_contact(app, contact):
     old_contacts = app.contact.get_contact_list()
     app.contact.create(contact)
