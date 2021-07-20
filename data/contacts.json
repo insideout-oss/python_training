@@ -1,0 +1,282 @@
+[
+  {
+    "py/object": "model.contact.Contact",
+    "firstname": "",
+    "middlename": "",
+    "lastname": "",
+    "nickname": "",
+    "photo": null,
+    "title": "",
+    "company": "",
+    "address": "",
+    "t_home": "",
+    "t_mobile": "",
+    "t_work": "",
+    "t_fax": "",
+    "email": "",
+    "email2": "",
+    "email3": "",
+    "homepage": "",
+    "birthdate": null,
+    "anniversary": null,
+    "secondary": {
+      "py/object": "model.secondary.Secondary",
+      "address": "",
+      "home": "",
+      "notes": ""
+    },
+    "id": null,
+    "all_phones_from_home_page": null,
+    "all_emails_from_home_page": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "firstname": "firstnamei5b6AZNCK",
+    "middlename": "middlenameueh",
+    "lastname": "lastname06",
+    "nickname": "nicknameQaOvouP4C",
+    "photo": null,
+    "title": "titleTv9W",
+    "company": "companyhzgUnq",
+    "address": "addressI285YMS",
+    "t_home": "42",
+    "t_mobile": "",
+    "t_work": "3",
+    "t_fax": "(2965",
+    "email": "emailY@test.com",
+    "email2": "email2lx@test.com",
+    "email3": "email3mH@test.com",
+    "homepage": "https://Ga",
+    "birthdate": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B90GDg=="
+        ]
+      ]
+    },
+    "anniversary": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B9YJEA=="
+        ]
+      ]
+    },
+    "secondary": {
+      "py/object": "model.secondary.Secondary",
+      "address": "addressGDG",
+      "home": "0)9123",
+      "notes": "noteswGAwcG6"
+    },
+    "id": null,
+    "all_phones_from_home_page": null,
+    "all_emails_from_home_page": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "firstname": "firstname",
+    "middlename": "middlenameZp",
+    "lastname": "lastnameVeFc0Lr",
+    "nickname": "nickname2BVYiD0m1",
+    "photo": null,
+    "title": "titleblq2vzoCK",
+    "company": "companyu2eY1rkUt",
+    "address": "addresse",
+    "t_home": "2-",
+    "t_mobile": "3-)",
+    "t_work": "14",
+    "t_fax": "334(",
+    "email": "emailjR@test.com",
+    "email2": "email2WDG@test.com",
+    "email3": "email3NzY2@test.com",
+    "homepage": "https://",
+    "birthdate": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B9YIEg=="
+        ]
+      ]
+    },
+    "anniversary": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B8QKCQ=="
+        ]
+      ]
+    },
+    "secondary": {
+      "py/object": "model.secondary.Secondary",
+      "address": "address74tbaP",
+      "home": "824113",
+      "notes": "notesrptMA"
+    },
+    "id": null,
+    "all_phones_from_home_page": null,
+    "all_emails_from_home_page": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "firstname": "firstnamey6O4f",
+    "middlename": "middlenameYWd",
+    "lastname": "lastname2yMdi89I",
+    "nickname": "nicknameqRwT1CCo",
+    "photo": null,
+    "title": "titleJvF",
+    "company": "companyVH",
+    "address": "addressrtY6BeEU",
+    "t_home": "2-4",
+    "t_mobile": "",
+    "t_work": "0)26--",
+    "t_fax": "",
+    "email": "emailwaWc@test.com",
+    "email2": "email2S5KM@test.com",
+    "email3": "email3VZa@test.com",
+    "homepage": "https://JCDzOIZy",
+    "birthdate": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B+AFGA=="
+        ]
+      ]
+    },
+    "anniversary": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B9UEGg=="
+        ]
+      ]
+    },
+    "secondary": {
+      "py/object": "model.secondary.Secondary",
+      "address": "address",
+      "home": "466",
+      "notes": "noteswoe32"
+    },
+    "id": null,
+    "all_phones_from_home_page": null,
+    "all_emails_from_home_page": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "firstname": "firstnameLGo",
+    "middlename": "middlename0Sga",
+    "lastname": "lastnamef",
+    "nickname": "nicknameo",
+    "photo": null,
+    "title": "titlei",
+    "company": "companyvJno3g",
+    "address": "address",
+    "t_home": "61338-)",
+    "t_mobile": "-(19",
+    "t_work": "93))",
+    "t_fax": "7",
+    "email": "emailR@test.com",
+    "email2": "email2q@test.com",
+    "email3": "email3Fa@test.com",
+    "homepage": "https://YnbS",
+    "birthdate": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B8ULBg=="
+        ]
+      ]
+    },
+    "anniversary": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B8sDAw=="
+        ]
+      ]
+    },
+    "secondary": {
+      "py/object": "model.secondary.Secondary",
+      "address": "addressV3f",
+      "home": "18",
+      "notes": "noteskdlrAV"
+    },
+    "id": null,
+    "all_phones_from_home_page": null,
+    "all_emails_from_home_page": null
+  },
+  {
+    "py/object": "model.contact.Contact",
+    "firstname": "firstnamelTnHnWV",
+    "middlename": "middlename",
+    "lastname": "lastname",
+    "nickname": "nicknameh81R",
+    "photo": null,
+    "title": "titleIg4eL",
+    "company": "companyga",
+    "address": "address",
+    "t_home": "9))7-",
+    "t_mobile": "8100)2",
+    "t_work": "32983",
+    "t_fax": "4",
+    "email": "emailBP93@test.com",
+    "email2": "email2d2Xx@test.com",
+    "email3": "email3d@test.com",
+    "homepage": "https://DMPhvmWp",
+    "birthdate": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B8sIDg=="
+        ]
+      ]
+    },
+    "anniversary": {
+      "py/object": "datetime.date",
+      "__reduce__": [
+        {
+          "py/type": "datetime.date"
+        },
+        [
+          "B+IIEA=="
+        ]
+      ]
+    },
+    "secondary": {
+      "py/object": "model.secondary.Secondary",
+      "address": "addresstq",
+      "home": "0907090",
+      "notes": "noteshB"
+    },
+    "id": null,
+    "all_phones_from_home_page": null,
+    "all_emails_from_home_page": null
+  }
+]
