@@ -26,6 +26,16 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
 
+    def select_add_to_group(self, group):
+        wd = self.app.wd
+        wd.find_element_by_name("to_group").click()
+        Select(wd.find_element_by_name("to_group")).select_by_value(group.id)
+
+    def select_contacts_in_group(self, group):
+        wd = self.app.wd
+        wd.find_element_by_name("group").click()
+        Select(wd.find_element_by_name("group")).select_by_value(group.id)
+
     def select_contact_by_id(self, id):
         wd = self.app.wd
         wd.find_element_by_css_selector("input[value='%s']" % id).click()
@@ -33,6 +43,10 @@ class ContactHelper:
     def open_edit_page(self, id):
         wd = self.app.wd
         wd.find_element_by_xpath("//a[@href='edit.php?id=%s']" % str(id)).click()
+
+    def press_add_to_group(self):
+        wd = self.app.wd
+        wd.find_element_by_name("add").click()
 
     def accept_alert(self):
         wd = self.app.wd
@@ -49,6 +63,10 @@ class ContactHelper:
     def submit_submit(self):
         wd = self.app.wd
         wd.find_element_by_name("submit").click()
+
+    def submit_remove(self):
+        wd = self.app.wd
+        wd.find_element_by_name("remove").click()
 
     def return_to_add_new_page(self):
         wd = self.app.wd
@@ -255,3 +273,17 @@ class ContactHelper:
 
         return self.merge_data_like_on_home_page([contact.t_home, contact.t_mobile, contact.t_work, secondary],
                                                  self.clear)
+
+    def add_contact_to_group(self, contact, group):
+        self.app.open_home_page()
+        self.select_contact_by_id(contact.id)
+        self.select_add_to_group(group)
+        self.press_add_to_group()
+        self.app.open_home_page()
+
+    def remove_contact_from_group(self, contact, group):
+        self.app.open_home_page()
+        self.select_contacts_in_group(group)
+        self.select_contact_by_id(contact.id)
+        self.submit_remove()
+        self.app.open_home_page()
