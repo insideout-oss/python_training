@@ -26,6 +26,10 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
 
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+
     def open_edit_page(self, id):
         wd = self.app.wd
         wd.find_element_by_xpath("//a[@href='edit.php?id=%s']" % str(id)).click()
@@ -124,12 +128,27 @@ class ContactHelper:
         self.app.open_home_page()
         self.contact_cache = None
 
+    def modify_contact_by_id(self, entry, id):
+        self.open_contact_edit_page_by_id(id)
+        self.fill_contact(entry)
+        self.submit_update()
+        self.app.open_home_page()
+        self.contact_cache = None
+
     def delete_first_contact(self):
         self.delete_contact_by_index(0)
 
     def delete_contact_by_index(self, index):
         self.app.open_home_page()
         self.select_contact_by_index(index)
+        self.submit_delete()
+        self.accept_alert()
+        self.app.open_home_page()
+        self.contact_cache = None
+
+    def delete_contact_by_id(self, id):
+        self.app.open_home_page()
+        self.select_contact_by_id(id)
         self.submit_delete()
         self.accept_alert()
         self.app.open_home_page()
@@ -176,6 +195,11 @@ class ContactHelper:
         self.app.open_home_page()
         self.select_contact_by_index(index)
         self.open_edit_page(self.get_contact_id_by_index(index))
+
+    def open_contact_edit_page_by_id(self, id):
+        self.app.open_home_page()
+        self.select_contact_by_id(id)
+        self.open_edit_page(id)
 
     def get_contact_info_from_edit_page(self, index):
         self.open_contact_edit_page_by_index(index)

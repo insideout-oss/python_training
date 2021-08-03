@@ -48,6 +48,15 @@ class GroupHelper:
         self.return_to_groups_page()
         self.group_cache = None
 
+    def modify_group_by_id(self, group, id):
+        self.open_groups_page()
+        self.select_element_by_id(id)
+        self.submit_edit()
+        self.fill_group_form(group)
+        self.submit_update()
+        self.return_to_groups_page()
+        self.group_cache = None
+
     def delete_first_group(self):
         self.delete_group_by_index(0)
 
