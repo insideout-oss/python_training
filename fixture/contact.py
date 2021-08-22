@@ -197,10 +197,12 @@ class ContactHelper:
                 id = element.find_element_by_name("selected[]").get_attribute("value")
                 lname = element.find_element_by_xpath("//input[@id=%s]/following::td[1]" % str(id)).text
                 fname = element.find_element_by_xpath("//input[@id=%s]/following::td[2]" % str(id)).text
-                cells = element.find_elements_by_tag_name("td")
-                all_phones = cells[5].text
-                all_emails = cells[4].text
-                address = cells[3].text
+                #cells = element.find_elements_by_tag_name("td")
+                all_phones = element.find_element_by_xpath("//input[@id=%s]/following::td[5]" % str(id)).text
+                    #cells[5].text
+                all_emails = element.find_element_by_xpath("//input[@id=%s]/following::td[4]" % str(id)).text
+                    #cells[4].text
+                address = element.find_element_by_xpath("//input[@id=%s]/following::td[3]" % str(id)).text
                 images = element.find_elements_by_tag_name("img")
                 homepage = element.find_element_by_xpath("//input[@id=%s]/following::td[9]/a/img" % str(id)).\
                     get_attribute("title") if len(images) == 4 else ''
@@ -225,6 +227,7 @@ class ContactHelper:
         self.open_contact_edit_page_by_index(index)
         firstname = self.get_field_value("firstname")
         lastname = self.get_field_value("lastname")
+        address = self.get_field_value("address")
         id = self.get_field_value("id")
         home = self.get_field_value("home")
         work = self.get_field_value("work")
@@ -235,6 +238,7 @@ class ContactHelper:
         email3 = self.get_field_value("email3")
         homepage = self.get_field_value("homepage")
         return Contact(firstname=firstname, lastname=lastname, id=id,
+                       address=address,
                        t_home=home, t_work=work,
                        t_mobile=mobile, secondary=Secondary(home=phone2),
                        email=email1, email2=email2, email3=email3,
