@@ -1,6 +1,8 @@
 pytest
+allure-pytestls
 pytest_bdd
 selenium
 jsonpickle
 pony
 pymysql
+lxml
