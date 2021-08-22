@@ -1,4 +1,5 @@
 import datetime
+import time
 
 from pytest_bdd import given, when, then
 from model.contact import Contact
@@ -27,7 +28,8 @@ def new_contact(firstname, middlename, lastname, nickname, title, company, addre
 
 
 @when("I add the contact to the list")
-def add_new_contact(app, new_contact):
+def add_new_contact(app, contact_list, new_contact):
+    print(contact_list)
     app.contact.create(new_contact)
 
 
@@ -56,21 +58,6 @@ def random_contact(non_empty_contact_list):
     return random.choice(non_empty_contact_list)
 
 
-@when("I delete the contact from the list")
-def delete_random_contact(app, random_contact):
-    app.contact.delete_contact_by_id(random_contact.id)
-
-
-@then("the new contact list is equal to the old contact list without the deleted contact")
-def verify_contact_deleted(db, app, check_ui, non_empty_contact_list, random_contact):
-    old_contacts = non_empty_contact_list
-    old_contacts.remove(random_contact)
-    new_contacts = db.get_contact_list()
-    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
-    if check_ui:
-        assert sorted(map(app.contact.clean, new_contacts), key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
-
-
 @when("I modify the contact from the list")
 def modify_random_contact(app, random_contact, new_contact):
     new_contact.id = random_contact.id
@@ -86,3 +73,20 @@ def verify_contact_modified(db, check_ui, app, non_empty_contact_list, new_conta
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
     if check_ui:
         assert sorted(map(app.contact.clean, new_contacts), key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
+
+
+@when("I delete the contact from the list")
+def delete_random_contact(app, non_empty_contact_list, random_contact):
+    print(non_empty_contact_list)
+    app.contact.delete_contact_by_id(random_contact.id)
+
+
+@then("the new contact list is equal to the old contact list without the deleted contact")
+def verify_contact_deleted(db, app, check_ui, non_empty_contact_list, random_contact):
+    old_contacts = non_empty_contact_list
+    old_contacts.remove(random_contact)
+    new_contacts = db.get_contact_list()
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    if check_ui:
+        assert sorted(map(app.contact.clean, new_contacts), key=Contact.id_or_max) == \
+               sorted(app.contact.get_contact_list(), key=Contact.id_or_max)

@@ -1,13 +1,13 @@
+
 Scenario Outline: Add new group
   Given a group list
   Given a group with <name>, <header> and <footer>
   When I add the group to the list
-  Then the new group list is equal to the old list with the added new group
+  Then the new group list is equal to the old group list with added new group
 
   Examples:
-  | name  | header  | footer  |
-  | name12 | header12 | footer12 |
-  | name23 | header23 | footer23 |
+  |   name   |   header   |   footer   |
+  | new-name1 | new_header2 | new_footer3 |
 
 
 Scenario: Delete a group

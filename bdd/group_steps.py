@@ -17,11 +17,12 @@ def new_group(name, header, footer):
 
 
 @when("I add the group to the list")
-def add_new_group(app, new_group):
+def add_new_group(app, group_list, new_group):
+    print(group_list)
     app.group.create(new_group)
 
 
-@then("the new group list is equal to the old list with the added new group")
+@then("the new group list is equal to the old group list with added new group")
 def verify_group_added(db, group_list, new_group):
     old_groups = group_list
     old_groups.append(new_group)
